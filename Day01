@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Jordan Zhong! 0u0</title>
+    </head>
+    <body>
+        <canvas id="canv">
+            
+        </canvas>
+        <script>
+            let canvas = document.querySelector("#canv")
+            let ctx = canvas.getContext("2d")
+
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+
+            //Signaling to the context that I'm going to draw something
+            ctx.save()
+
+            //set center of our object
+            ctx.translate(500, 500)
+
+            //lightning draw from center just set
+            ctx.lineTo(-10, -10)
+            ctx.lineTo(10, -10)
+            ctx.lineTo(0, 10)
+            ctx.lineTo(20, 10)
+            ctx.lineTo(-15, 40)
+            ctx.lineTo(-5, 15)
+            ctx.lineTo(-20, 15)
+
+            ctx.fillStyle = "yellow"
+            ctx.fill()
+            
+
+            //signaling that I'm done drawing
+            ctx.restore()
+        </script>
+    </body>
+</html>
