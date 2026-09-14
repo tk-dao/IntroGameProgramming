@@ -2,6 +2,7 @@ class GameObject{
 
     //all components attached to game object
     components = []
+    markForDestroy = false
 
     //get the transform component
     get transform(){
@@ -43,5 +44,9 @@ class GameObject{
             component.draw?.(ctx)
         }
 
+    }
+
+    destroy(){
+        this.markForDestroy = true
     }
 }

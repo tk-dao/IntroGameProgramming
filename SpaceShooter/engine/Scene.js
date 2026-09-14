@@ -24,6 +24,14 @@ class Scene{
         for(const gameObject of this.gameObjects){
             gameObject.update()
         }
+
+        let temp = []
+        for(const gameObject of this.gameObjects){
+            if(!gameObject.markForDestroy){
+                temp.push(gameObject)
+            }
+        }
+        this.gameObjects = temp
     }
     
     
