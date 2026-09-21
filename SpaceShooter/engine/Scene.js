@@ -5,9 +5,10 @@ class Scene{
     gameObjects = []
 
     //adds game object to scene, sets starting position to 0,0
-    instantiate(gameObject, position = new Vector2(0, 0)){
+    instantiate(gameObject, position = new Vector2(0, 0), rotation = 0){
         this.gameObjects.push(gameObject)
         gameObject.transform.position = position
+        gameObject.transform.rotation = rotation
     }
 
     //starts all game objects in scene
@@ -45,6 +46,6 @@ class Scene{
 }
 
 //convenient function so you don't have to do Engine.currentScene
-function instantiate(gameObject, position = new Vector2(0, 0)){
-    Engine.currentScene.instantiate(gameObject, position)
+function instantiate(gameObject, position = new Vector2(0, 0), rotation = 0){
+    Engine.currentScene.instantiate(gameObject, position, rotation)
 }

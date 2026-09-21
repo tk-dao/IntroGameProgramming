@@ -13,6 +13,8 @@ class Polygon extends Component{
 
         //set center of our object
         ctx.translate(position.x, position.y);
+        ctx.scale(this.transform.scale.x, this.transform.scale.y)
+        ctx.rotate(this.transform.rotation)
 
         //draws using the points array
         ctx.beginPath()

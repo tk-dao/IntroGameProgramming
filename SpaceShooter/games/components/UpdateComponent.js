@@ -2,7 +2,9 @@
 //handles player movement and fires laser
 class UpdateComponent extends Component{
     
-    
+    speed = 1000
+
+
     //reset laser cooldown
     start(){
         this.timeSinceLastLaser = 0
@@ -17,19 +19,19 @@ class UpdateComponent extends Component{
 
         //moves player object based on arrow keys press
         if (Input.keysDown.includes("ArrowRight")) {
-            this.transform.position.x += 100
+            this.transform.position.x += Time.deltaTime * this.speed
 
         }
         if (Input.keysDown.includes("ArrowLeft")) {
-            this.transform.position.x -= 100
+            this.transform.position.x -= Time.deltaTime * this.speed
 
         }
         if (Input.keysDown.includes("ArrowUp")) {
-            this.transform.position.y -= 100
+            this.transform.position.y -= Time.deltaTime * this.speed
 
         }
         if (Input.keysDown.includes("ArrowDown")) {
-            this.transform.position.y += 100
+            this.transform.position.y += Time.deltaTime * this.speed
 
         }
 
