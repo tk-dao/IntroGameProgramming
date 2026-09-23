@@ -6,6 +6,6 @@ class PlayerTwo extends GameObject{
         //
         this.addComponent(new P2Update())
         //shape of player object
-        this.addComponent(new Polygon(), {fillStyle:"rgb(11, 185, 72)", points: Assets.triangle})
+        this.addComponent(new Polygon(), {fillStyle:"rgb(11, 185, 72)", points: Assets.bow})
     }
 }
