@@ -16,30 +16,40 @@
     <script src="../engine/Engine.js"></script>
     <script src="../engine/Input.js"></script>
     <script src="../engine/Scene.js"></script>
+    <script src="../engine/SceneManager.js"></script>
     <script src="../engine/Time.js"></script>
     <script src="../engine/GameObject.js"></script>
     <script src="../engine/Component.js"></script>
+
     <script src="../engine/components/Transform.js"></script>
     <script src="../engine/components/Polygon.js"></script>
+    <script src="../engine/components/TextLabel.js"></script>
 
     <!--Game Specific scripts-->
-    <script src="../games/scenes/MainScene.js"></script>
+    <script src="../games/scenes/Level01.js"></script>
+    <script src="../games/scenes/Level02.js"></script>
+    <script src="../games/scenes/GenericLevel.js"></script>
     
     <script src="../games/gameObjects/MainGameObject.js"></script>
     <script src="../games/gameObjects/LaserGameObject.js"></script>
     <script src="../games/gameObjects/EnemyGameObject.js"></script>
+    <script src="../games/gameObjects/PointsGameObject.js"></script>
+    <script src="../games/gameObjects/LevelControllerGameObject.js"></script>
 
     <script src="../games/components/UpdateComponent.js"></script>
     <script src="../games/components/LaserController.js"></script>
     <script src="../games/components/EnemyController.js"></script>
+    <script src="../games/components/LevelController.js"></script>
+    <script src="../games/components/PointsController.js"></script>
+    <script src="../games/components/Health.js"></script>
     
     <script src="../games/Assets.js"></script>
+    <script src="../games/Globals.js"></script>
     <script>
         
         
         //start the engine
-        Engine.currentScene = new MainScene()
-        Engine.start()
+        Engine.start(Level01)
 
 
     </script>

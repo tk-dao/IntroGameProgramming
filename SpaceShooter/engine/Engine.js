@@ -3,9 +3,7 @@ class Engine{
 
     static ctx
 
-    static currentScene
-
-    static start(){
+    static start(nextScene){
         //setup canvas and contex for game
         Engine.canvas = document.querySelector("#canv");
         Engine.ctx = Engine.canvas.getContext("2d");
@@ -14,7 +12,7 @@ class Engine{
         addEventListener("keydown", Input.keydown)
         addEventListener("keyup", Input.keyup)
 
-        Engine.currentScene.start()
+        SceneManager.nextScene = nextScene
 
         requestAnimationFrame(Engine.gameLoop)
 
@@ -23,6 +21,9 @@ class Engine{
     //game loop (loop through as the game plays)
     //game needs to update, draw items on screen, and recall the game loop
     static gameLoop(){
+
+        SceneManager.update()
+
         Engine.update()
         Engine.draw()
 
@@ -33,7 +34,8 @@ class Engine{
     static update(){
         //call the update in your Scene file
         // update()
-        Engine.currentScene.update()
+        SceneManager.currentScene.start()
+        SceneManager.currentScene.update()
     }
     
     static draw(){
@@ -43,6 +45,6 @@ class Engine{
         
         //call the draw in your Scene file
         //draw(Engine.ctx)
-        Engine.currentScene.draw(Engine.ctx)
+        SceneManager.currentScene.draw(Engine.ctx)
     }
 }

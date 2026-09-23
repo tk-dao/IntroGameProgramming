@@ -22,7 +22,7 @@ class Engine{
             })
         }
 
-        Engine.currentScene.start()
+        SceneManager.currentScene.start()
 
         requestAnimationFrame(Engine.gameLoop)
 
@@ -39,7 +39,7 @@ class Engine{
     static update(){
         //call the update in your Scene file
         // update()
-        Engine.currentScene.update()
+        SceneManager.currentScene.update()
     }
     
     static draw(){
@@ -61,6 +61,8 @@ class Engine{
         
         //call the draw in your Scene file
         //draw(Engine.ctx)
-        Engine.currentScene.draw(Engine.ctx)
+        SceneManager.currentScene.draw(Engine.ctx)
     }
+
+    
 }

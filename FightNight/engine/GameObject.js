@@ -2,6 +2,7 @@ class GameObject{
 
     //all components attached to game object
     components = []
+    name
 
     //get the transform component
     get transform(){
@@ -9,8 +10,9 @@ class GameObject{
     }
 
     //game object is assigned transform component immedietely
-    constructor(){
+    constructor(name){
         this.addComponent(new Transform())
+        this.name = name
     }
 
     //adds a component to the game object
@@ -43,5 +45,11 @@ class GameObject{
             component.draw?.(ctx)
         }
 
+    }
+
+    static find(name){
+        //SAME AS 
+        //return engine.currentScene.gameObjects.find(function(go){return go.name == name})
+        return Engine.currentScene.gameObjects.find(go=>go.name == name)
     }
 }

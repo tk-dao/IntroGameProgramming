@@ -1,6 +1,6 @@
 class Stage extends GameObject{
     constructor(){
-        super()
+        super("Stage")
 
         this.addComponent(new Polygon(), {fillStyle: "gray", points: [
             new Vector2(-2000, 0),

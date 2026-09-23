@@ -5,7 +5,7 @@ class LaserController extends Component{
 
     update(){
         //moves the laser upwards
-        this.transform.position.y -= Time.deltaTime * 500
+        this.transform.position.y -= Time.deltaTime * 2000
 
 
         if(this.transform.position.y < 500){
@@ -14,15 +14,18 @@ class LaserController extends Component{
 
         //Collision check
         let myPosition = this.transform.position
-        let enemyGameObject = GameObject.find("Enemy")
+        let enemyGameObjects = GameObject.findGameObjectsWithTag("Enemy")
 
-        if(enemyGameObject){
+        for(const enemyGameObject of enemyGameObjects){
             let enemyPosition = enemyGameObject.transform.position
     
             let distance = myPosition.minus(enemyPosition).magnitude
-            if(distance < 20){
+            if(distance < 75){
                 this.gameObject.destroy()
-                enemyGameObject.destroy()
+                // enemyGameObject.destroy()
+                let healthComponent = enemyGameObject.getComponent(Health)
+                healthComponent.health --
+                Globals.points ++
             }
 
         }

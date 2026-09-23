@@ -4,6 +4,7 @@ class GameObject{
     components = []
     markForDestroy = false
     name
+    tags = []
 
     //get the transform component
     get transform(){
@@ -11,9 +12,10 @@ class GameObject{
     }
 
     //game object is assigned transform component immedietely
-    constructor(name){
+    constructor(name, tags = []){
         this.addComponent(new Transform())
         this.name = name
+        this.tags = tags
     }
 
     //adds a component to the game object
@@ -25,8 +27,9 @@ class GameObject{
 
     //calls start on every component
     start(){
-        for(const component of this.components){
+        for(const component of this.components.filter(c=>!c.didStart)){
             component.start?.()
+            component.didStart = true
         }
     }
     
@@ -52,9 +55,18 @@ class GameObject{
         this.markForDestroy = true
     }
 
+    getComponent(type){
+        return this.components.find(c=>c instanceof type)
+    }
+
     static find(name){
         //SAME AS 
-        //return engine.currentScene.gameObjects.find(function(go){return go.name == name})
-        return Engine.currentScene.gameObjects.find(go=>go.name == name)
+        //return SceneManager.currentScene.gameObjects.find(function(go){return go.name == name})
+        return SceneManager.currentScene.gameObjects.find(go=>go.name == name)
+    }
+    static findGameObjectsWithTag(tag){
+        //SAME AS 
+        //return SceneManager.currentScene.gameObjects.find(function(go){return go.name == name})
+        return SceneManager.currentScene.gameObjects.filter(go=>go.tags.includes(tag))
     }
 }

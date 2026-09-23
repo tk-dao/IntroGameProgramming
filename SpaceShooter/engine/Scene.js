@@ -45,7 +45,7 @@ class Scene{
     }
 }
 
-//convenient function so you don't have to do Engine.currentScene
+//convenient function so you don't have to do SceneManager.currentScene
 function instantiate(gameObject, position = new Vector2(0, 0), rotation = 0){
-    Engine.currentScene.instantiate(gameObject, position, rotation)
+    SceneManager.currentScene.instantiate(gameObject, position, rotation)
 }
