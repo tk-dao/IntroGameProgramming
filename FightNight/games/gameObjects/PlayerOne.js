@@ -6,6 +6,7 @@ class PlayerOne extends GameObject{
         //Moves Player one
         this.addComponent(new P1Update())
         //shape of player object
-        this.addComponent(new Polygon(), {fillStyle:"rgb(220, 17, 17)", points: Assets.arrow})
+        this.addComponent(new Polygon(), {fillStyle:"rgb(220, 17, 17)", points: Assets.square})
+        this.addComponent(new Health(), {health: 100})
     }
 }

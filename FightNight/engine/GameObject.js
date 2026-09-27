@@ -50,6 +50,6 @@ class GameObject{
     static find(name){
         //SAME AS 
         //return engine.currentScene.gameObjects.find(function(go){return go.name == name})
-        return Engine.currentScene.gameObjects.find(go=>go.name == name)
+        return SceneManager.currentScene.gameObjects.find(go=>go.name == name)
     }
 }

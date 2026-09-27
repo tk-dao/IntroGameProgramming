@@ -1,6 +1,6 @@
 
 //main starting scene
-class MainScene extends Scene{
+class Arena extends Scene{
     constructor(){
         super()
         this.instantiate(new Stage(), new Vector2(3000, 1500))

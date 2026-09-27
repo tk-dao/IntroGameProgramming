@@ -88,7 +88,7 @@ class Assets {
         new Vector2(40, -1),
         //shaft
         new Vector2(-30, -1),
-        //fletching
+        //feathers
         new Vector2(-35, -6),
         new Vector2(-40, -6),
         new Vector2(-35, 0),
@@ -100,9 +100,45 @@ class Assets {
         new Vector2(40, 5),
     ]
 
-    static buckler = []
+    static buckler = [
+        //outer face, top to bottom
+        new Vector2(6, -50),
+        new Vector2(10, -40),
+        new Vector2(14, -30),
+        new Vector2(16, -20),
+        new Vector2(16, -16),
+        //sheild
+        new Vector2(24, -14),
+        new Vector2(28, -8),
+        new Vector2(30, 0),
+        new Vector2(28, 8),
+        new Vector2(24, 14),
+        new Vector2(16, 16),
+        //outer face continued
+        new Vector2(16, 20),
+        new Vector2(14, 30),
+        new Vector2(10, 40),
+        new Vector2(6, 50),
+        //back
+        new Vector2(0, 50),
+        new Vector2(0, -50),
+    ]
 
-    static staff = []
+    static staff = [
+        //knob
+        new Vector2(-3, -61),
+        new Vector2(-7, -63),
+        new Vector2(-10, -70),
+        new Vector2(-7, -77),
+        new Vector2(0, -80),
+        new Vector2(7, -77),
+        new Vector2(10, -70),
+        new Vector2(7, -63),
+        new Vector2(3, -61),
+        //stick
+        new Vector2(3, 80),
+        new Vector2(-3, 80),
+    ]
 
 
     //SPELLS
