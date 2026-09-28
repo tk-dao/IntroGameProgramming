@@ -2,7 +2,7 @@
 //main player object
 class PlayerOne extends GameObject{
     constructor(){
-        super("PlayerOne")
+        super("PlayerOne", ["Player"])
         //Moves Player one
         this.addComponent(new P1Update())
         //shape of player object

@@ -54,8 +54,10 @@ class Assets {
     ]
 
     static bow = [
-        //outer curve (top to bottom)
-        new Vector2(0, -60),
+        //string top, then bow outer curve down
+        new Vector2(-1, -60),
+        new Vector2(1, -60),
+        new Vector2(1, -59),
         new Vector2(11, -45),
         new Vector2(19, -30),
         new Vector2(23, -15),
@@ -63,8 +65,14 @@ class Assets {
         new Vector2(23, 15),
         new Vector2(19, 30),
         new Vector2(11, 45),
-        new Vector2(0, 60),
-        //inner curve (bottom to top)
+        new Vector2(1, 59),
+        //string bottom, up to the middle
+        new Vector2(1, 60),
+        new Vector2(-1, 60),
+        new Vector2(-1, 0),
+        //cross the string, around the gap
+        new Vector2(1, 0),
+        new Vector2(1, 58),
         new Vector2(7, 45),
         new Vector2(13, 30),
         new Vector2(16, 15),
@@ -72,13 +80,10 @@ class Assets {
         new Vector2(16, -15),
         new Vector2(13, -30),
         new Vector2(7, -45),
-    ]
-
-    static bowString = [
-        new Vector2(-1, -60),
-        new Vector2(1, -60),
-        new Vector2(1, 60),
-        new Vector2(-1, 60),
+        new Vector2(1, -58),
+        //back to the middle and out
+        new Vector2(1, 0),
+        new Vector2(-1, 0),
     ]
 
     static arrow = [

@@ -47,9 +47,23 @@ class GameObject{
 
     }
 
+    destroy(){
+        this.markForDestroy = true
+    }
+
+    getComponent(type){
+        return this.components.find(c=>c instanceof type)
+    }
+
     static find(name){
         //SAME AS 
         //return engine.currentScene.gameObjects.find(function(go){return go.name == name})
         return SceneManager.currentScene.gameObjects.find(go=>go.name == name)
+    }
+
+    static findGameObjectsWithTag(tag){
+        //SAME AS 
+        //return SceneManager.currentScene.gameObjects.find(function(go){return go.name == name})
+        return SceneManager.currentScene.gameObjects.filter(go=>go.tags.includes(tag))
     }
 }

@@ -6,7 +6,7 @@ class StartController extends Component{
 
     update(){
         if(Input.keysDown.includes("Space")){
-            SceneManager.loadScene(Arena)
+            SceneManager.loadScene(CharacterSelectScreen)
         }
     }
 }
