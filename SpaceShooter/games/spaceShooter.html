@@ -24,6 +24,7 @@
     <script src="../engine/components/Transform.js"></script>
     <script src="../engine/components/Polygon.js"></script>
     <script src="../engine/components/TextLabel.js"></script>
+    <script src="../engine/components/Camera.js"></script>
 
     <!--Game Specific scripts-->
     <script src="../games/scenes/Level01.js"></script>
@@ -45,11 +46,12 @@
     
     <script src="../games/Assets.js"></script>
     <script src="../games/Globals.js"></script>
+    <script src="../games/Settings.js"></script>
     <script>
         
         
         //start the engine
-        Engine.start(Level01)
+        Engine.start(Level01, Settings)
 
 
     </script>

@@ -43,6 +43,8 @@ class UpdateComponent extends Component{
 
 
         }
+
+        Camera.main.transform.position = this.transform.position.clone()
             
     }
 }

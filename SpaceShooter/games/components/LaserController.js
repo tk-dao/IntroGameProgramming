@@ -8,7 +8,7 @@ class LaserController extends Component{
         this.transform.position.y -= Time.deltaTime * 2000
 
 
-        if(this.transform.position.y < 500){
+        if(this.transform.position.y < -1000){
             this.gameObject.destroy()
         }
 
@@ -25,7 +25,12 @@ class LaserController extends Component{
                 // enemyGameObject.destroy()
                 let healthComponent = enemyGameObject.getComponent(Health)
                 healthComponent.health --
-                Globals.points ++
+                //Globals.points ++
+                //finds all game objects becasause all game objects have transform type component
+                let gameObjects = GameObject.findGameObjectsByType(Transform)
+                for(const gameObject of gameObjects){
+                    gameObject.broadcastMessage("updatePoints", [1])
+                }
             }
 
         }

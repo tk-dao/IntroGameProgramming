@@ -5,6 +5,7 @@ class GameObject{
     markForDestroy = false
     name
     tags = []
+    layer = "default"
 
     //get the transform component
     get transform(){
@@ -12,10 +13,11 @@ class GameObject{
     }
 
     //game object is assigned transform component immedietely
-    constructor(name, tags = []){
+    constructor(name, tags = [], layer = "default"){
         this.addComponent(new Transform())
         this.name = name
         this.tags = tags
+        this.layer = layer
     }
 
     //adds a component to the game object
@@ -23,6 +25,13 @@ class GameObject{
         Object.assign(component, parameters)
         this.components.push(component)
         component.gameObject = this
+    }
+
+
+    broadcastMessage(message, args = []){
+        for(const component of this.components){
+            component[message]?.(...args)
+        }
     }
 
     //calls start on every component
@@ -68,5 +77,8 @@ class GameObject{
         //SAME AS 
         //return SceneManager.currentScene.gameObjects.find(function(go){return go.name == name})
         return SceneManager.currentScene.gameObjects.filter(go=>go.tags.includes(tag))
+    }
+    static findGameObjectsByType(type){
+        return SceneManager.currentScene.gameObjects.filter(go=>go.components.find(c=>c instanceof type))
     }
 }

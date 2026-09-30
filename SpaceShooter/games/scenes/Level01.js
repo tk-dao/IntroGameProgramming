@@ -5,7 +5,7 @@ class Level01 extends Scene{
         super()
         //spawn main game object at 250,250
         
-        this.instantiate(new EnemyGameObject(), new Vector2(3000, 500), Math.PI)
+        this.instantiate(new EnemyGameObject(), new Vector2(0, -500), Math.PI)
         
         this.instantiate(new LevelControllerGameObject())
     }

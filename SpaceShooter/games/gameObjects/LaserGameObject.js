@@ -2,7 +2,7 @@
 //actual laser as game object
 class LaserGameObject extends GameObject{
     constructor(){
-        super("Laser")
+        super("Laser", [], "lasers")
         //adds laser controller as component so it can move
         this.addComponent(new LaserController())
         //adds polygon as component so we can change the shape
