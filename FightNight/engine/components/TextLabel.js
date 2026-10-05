@@ -1,5 +1,5 @@
 class TextLabel extends Component{
-    fillStyle = "black"
+    fillStyle = "white"
     text = "[BLANK]"
     font = "10px sans-serif"
     textAlign = "left"

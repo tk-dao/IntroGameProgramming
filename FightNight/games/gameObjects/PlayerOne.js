@@ -3,10 +3,11 @@
 class PlayerOne extends GameObject{
     constructor(){
         super("PlayerOne", ["Player"])
+        this.p1Data = CharacterData.characters[Settings.p1Character]
         //Moves Player one
         this.addComponent(new P1Update())
         //shape of player object
-        this.addComponent(new Polygon(), {fillStyle:"rgb(220, 17, 17)", points: Assets.square})
-        this.addComponent(new Health(), {health: 100})
+        this.addComponent(new Polygon(), {fillStyle: this.p1Data.fillStyle, points: this.p1Data.shape})
+        this.addComponent(new Health(), {health: this.p1Data.health})
     }
 }

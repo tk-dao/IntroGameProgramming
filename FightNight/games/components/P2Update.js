@@ -5,6 +5,7 @@ class P2Update extends Component{
     vy = 0
     gravity = 2
     grounded = false
+    p2Data = CharacterData.characters[Settings.p2Character]
 
     applyGravity(){
         this.vy += this.gravity
@@ -49,11 +50,11 @@ class P2Update extends Component{
 
         //moves player object based on arrow keys press
         if (Input.keysDown.includes("ArrowRight")) {
-            this.transform.position.x += 35
+            this.transform.position.x += this.p2Data.speed
 
         }
         if (Input.keysDown.includes("ArrowLeft")) {
-            this.transform.position.x -= 35
+            this.transform.position.x -= this.p2Data.speed
 
         }
         if (Input.keysDown.includes("ArrowUp") && this.grounded) {
