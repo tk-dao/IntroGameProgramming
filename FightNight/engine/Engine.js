@@ -1,10 +1,10 @@
 class Engine{
     static canvas
     static ctx
-    static currentScene
+    static layers = ["default", "UI"]
     static stars = []
 
-    static start(nextScene){
+    static start(nextScene, settings){
         //setup canvas and contex for game
         Engine.canvas = document.querySelector("#canv");
         Engine.ctx = Engine.canvas.getContext("2d");
@@ -24,6 +24,10 @@ class Engine{
 
         SceneManager.nextScene = nextScene
 
+        if(settings){
+            Engine.layers = settings.layers
+        }
+
         requestAnimationFrame(Engine.gameLoop)
 
     }
@@ -35,13 +39,15 @@ class Engine{
 
         Engine.update()
         Engine.draw()
+
+        Time.update()
         requestAnimationFrame(Engine.gameLoop)
     }
 
     static update(){
         //call the update in your Scene file
         // update()
-        SceneManager.currentScene.start()
+        // SceneManager.currentScene.start()
         SceneManager.currentScene.update()
     }
     
