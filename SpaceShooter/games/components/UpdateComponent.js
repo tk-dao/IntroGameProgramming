@@ -35,14 +35,17 @@ class UpdateComponent extends Component{
 
         }
 
-        //fires laser every 10 frames
-        if (this.timeSinceLastLaser > 10) {
-            this.timeSinceLastLaser = 0
-            //create laser (uses clone so position doesn't affect main player object position)
+        // //fires laser every 10 frames
+        // if (this.timeSinceLastLaser > 10) {
+        //     this.timeSinceLastLaser = 0
+        //     //create laser (uses clone so position doesn't affect main player object position)
+        //     instantiate(new LaserGameObject(), this.transform.position.clone())
+
+
+        // }
+
+        if(Input.keysDownThisFrame.includes("Space"))
             instantiate(new LaserGameObject(), this.transform.position.clone())
-
-
-        }
 
         Camera.main.transform.position = this.transform.position.clone()
             

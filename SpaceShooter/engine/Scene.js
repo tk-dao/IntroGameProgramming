@@ -4,10 +4,13 @@ class Scene{
     //holds all game object in current scene
     gameObjects = []
 
-    constructor(){
+    constructor(backgroundColor){
         let cameraGameObject = new GameObject("MainCamera", ["MainCamera"])
         cameraGameObject.addComponent(new Camera())
         this.instantiate(cameraGameObject)
+        if(backgroundColor){
+            cameraGameObject.getComponent(Camera).backgroundColor = backgroundColor
+        }
     }
 
     //adds game object to scene, sets starting position to 0,0

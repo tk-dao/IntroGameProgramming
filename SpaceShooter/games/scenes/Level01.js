@@ -2,7 +2,7 @@
 //main starting scene
 class Level01 extends Scene{
     constructor(){
-        super()
+        super("black")
         //spawn main game object at 250,250
         
         this.instantiate(new EnemyGameObject(), new Vector2(0, -500), Math.PI)
