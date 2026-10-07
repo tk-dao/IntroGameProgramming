@@ -13,9 +13,9 @@ class Input{
 
 
     static mousedown(event){
-        if(!Input.mouseButtonsDown.includes(event.code))
-            Input.mouseButtonsDown.push(event.code)
-            Input.mouseButtonsDownThisFrame.push(event.code)
+        if(!Input.mouseButtonsDown.includes(event.button))
+            Input.mouseButtonsDown.push(event.button)
+            Input.mouseButtonsDownThisFrame.push(event.button)
     }
 
     static mouseup(event){
@@ -31,9 +31,9 @@ class Input{
     // if it isn't already in there (prevents duplicates from key-repeat
     // when a key is held down)
     static keydown(event){
-        if(!Input.keysDown.includes(event.button))
-            Input.keysDown.push(event.button)
-            Input.keysDownThisFrame.push(event.button)
+        if(!Input.keysDown.includes(event.code))
+            Input.keysDown.push(event.code)
+            Input.keysDownThisFrame.push(event.code)
     }
 
     // called when a key is released; removes the key's code from keysDown
