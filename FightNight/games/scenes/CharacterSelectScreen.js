@@ -2,6 +2,7 @@ class CharacterSelectScreen extends Scene{
     constructor(){
         super()
         this.instantiate(new CTitleTextGameObject(), new Vector2(3000, 500))
+        this.instantiate(new CEscapeTextGameObject(), new Vector2(5000, 3200))
         
         for(let i = 0; i < 3; i++){
             const cardX = CharacterData.CardXCoords[i]

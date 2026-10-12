@@ -4,18 +4,13 @@ class CharacterSelectController extends Component{
         this.p2Index = 2
         this.p1Ready = false
         this.p2Ready = false
-        this.lastKeys = []
-    }
-
-    pressed(key){
-        return Input.keysDown.includes(key) && !this.lastKeys.includes(key)
     }
 
     update(){
         //if player 1 still choosing allow move selection
         if(!this.p1Ready){
             //move selection left, if same index as p2 skip to next selection
-            if(this.pressed("KeyA")){
+            if(Input.keysDownThisFrame.includes("KeyA")){
                 this.p1Index--
                 if(this.p1Index < 0){
                     this.p1Index = 2
@@ -28,7 +23,7 @@ class CharacterSelectController extends Component{
                 }
             }
             //move selection right, if same index as p2 skip to next selection
-            if(this.pressed("KeyD")){
+            if(Input.keysDownThisFrame.includes("KeyD")){
                 this.p1Index++
                 if(this.p1Index > 2){
                     this.p1Index = 0
@@ -45,7 +40,7 @@ class CharacterSelectController extends Component{
         //if player 2 is still choosing allow move selection
         if(!this.p2Ready){
             //move selection left, if same index as p1 skip to next selection
-            if(this.pressed("ArrowLeft")){
+            if(Input.keysDownThisFrame.includes("ArrowLeft")){
                 this.p2Index--
                 if(this.p2Index < 0){
                     this.p2Index = 2
@@ -58,7 +53,7 @@ class CharacterSelectController extends Component{
                 }
             }
             //move selection right, if same index as p1 skip to next selection
-            if(this.pressed("ArrowRight")){
+            if(Input.keysDownThisFrame.includes("ArrowRight")){
                 this.p2Index++
                 if(this.p2Index > 2){
                     this.p2Index = 0
@@ -73,11 +68,11 @@ class CharacterSelectController extends Component{
         }
 
         //submit selection p1
-        if(this.pressed("KeyF")){
+        if(Input.keysDownThisFrame.includes("KeyF")){
             this.p1Ready = !this.p1Ready
         }
         //submit selection p2
-        if(this.pressed("Enter")){
+        if(Input.keysDownThisFrame.includes("Enter")){
             this.p2Ready = !this.p2Ready
         }
 
@@ -87,7 +82,9 @@ class CharacterSelectController extends Component{
             SceneManager.loadScene(Arena)
         }
 
-        this.lastKeys = Input.keysDown.slice()
+        if(Input.keysDownThisFrame.includes("Escape")){
+            SceneManager.loadScene(StartScreen)
+        }
     }
 
     draw(ctx){
