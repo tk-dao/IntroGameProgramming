@@ -13,6 +13,8 @@ class TextLabel extends Component{
         // ctx.scale(this.transform.scale.x * 10, this.transform.scale.y * 10)
         // ctx.rotate(this.transform.rotation)
 
+        ctx.font = this.font
+
         ctx.fillStyle = this.fillStyle;
         ctx.fillText(this.text, 0, 0)
 
