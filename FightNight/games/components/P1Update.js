@@ -40,6 +40,7 @@ class P1Update extends Component{
     }
     
     start(){
+        this.facingLeft = false
     }
     
     //update every frame
@@ -49,10 +50,14 @@ class P1Update extends Component{
 
         //moves player object based on arrow keys press
         if (Input.keysDown.includes("KeyD")) {
+            this.facingLeft = false
+            this.transform.scale.x = 1
             this.transform.position.x += this.p1Data.speed
 
         }
         if (Input.keysDown.includes("KeyA")) {
+            this.facingLeft = true
+            this.transform.scale.x = -1
             this.transform.position.x -= this.p1Data.speed
 
         }

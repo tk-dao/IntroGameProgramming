@@ -12,9 +12,9 @@ class TextLabel extends Component{
         ctx.save();
 
         //set center of the text
-        ctx.translate(position.x, position.y);
-        ctx.scale(this.transform.scale.x * 10, this.transform.scale.y * 10)
-        ctx.rotate(this.transform.rotation)
+        // ctx.translate(position.x, position.y);
+        // ctx.scale(this.transform.scale.x * 10, this.transform.scale.y * 10)
+        // ctx.rotate(this.transform.rotation)
 
         ctx.font = this.font
         ctx.textAlign = this.textAlign

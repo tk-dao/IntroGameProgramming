@@ -3,10 +3,10 @@ class CTitleTextGameObject extends GameObject{
         super("CTitleTextGameObject")
         this.addComponent(new TextLabel(), {
             text: "SELECT YOUR FIGHTER",
-            font: "bold 24px Impact",
+            font: "bold 300px Impact",
             fillStyle: "rgb(255, 255, 255)",
             textAlign: "center",
-            letterSpacing: "10px"
+            letterSpacing: "100px"
         })
     }
 }

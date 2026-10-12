@@ -17,6 +17,6 @@ class CharacterSelectScreen extends Scene{
             this.instantiate(new CardStatGameObject("SPEED: " + data.speed), new Vector2(cardX, 2550))
             this.instantiate(new CardStatGameObject("RANGE: " + data.range), new Vector2(cardX, 2700))
         }
-        this.instantiate(new CharacterSelectScreenGameObject(), new Vector2(3000, 1800))
+        this.instantiate(new CharacterSelectScreenGameObject(), new Vector2(0, 0))
     }
 }

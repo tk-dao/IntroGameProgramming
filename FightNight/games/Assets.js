@@ -106,27 +106,30 @@ class Assets {
     ]
 
     static buckler = [
-        //outer face, top to bottom
-        new Vector2(6, -50),
-        new Vector2(10, -40),
-        new Vector2(14, -30),
-        new Vector2(16, -20),
-        new Vector2(16, -16),
-        //sheild
-        new Vector2(24, -14),
-        new Vector2(28, -8),
-        new Vector2(30, 0),
-        new Vector2(28, 8),
-        new Vector2(24, 14),
-        new Vector2(16, 16),
-        //outer face continued
-        new Vector2(16, 20),
-        new Vector2(14, 30),
-        new Vector2(10, 40),
-        new Vector2(6, 50),
-        //back
-        new Vector2(0, 50),
-        new Vector2(0, -50),
+        new Vector2(40, 0),
+        new Vector2(39, 10),
+        new Vector2(35, 20),
+        new Vector2(28, 28),
+        new Vector2(20, 35),
+        new Vector2(10, 39),
+        new Vector2(0, 40),
+        new Vector2(-10, 39),
+        new Vector2(-20, 35),
+        new Vector2(-28, 28),
+        new Vector2(-35, 20),
+        new Vector2(-39, 10),
+        new Vector2(-40, 0),
+        new Vector2(-39, -10),
+        new Vector2(-35, -20),
+        new Vector2(-28, -28),
+        new Vector2(-20, -35),
+        new Vector2(-10, -39),
+        new Vector2(0, -40),
+        new Vector2(10, -39),
+        new Vector2(20, -35),
+        new Vector2(28, -28),
+        new Vector2(35, -20),
+        new Vector2(39, -10),
     ]
 
     static staff = [

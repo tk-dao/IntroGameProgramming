@@ -12,7 +12,7 @@ class Polygon extends Component{
         ctx.save();
 
         //set center of our object
-        ctx.translate(position.x, position.y);
+        // ctx.translate(position.x, position.y);
 
         //draws using the points array
         ctx.beginPath()

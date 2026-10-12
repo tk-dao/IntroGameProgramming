@@ -8,6 +8,7 @@ class Scene{
     instantiate(gameObject, position = new Vector2(0, 0)){
         this.gameObjects.push(gameObject)
         gameObject.transform.position = position
+        return gameObject
     }
 
     //starts all game objects in scene

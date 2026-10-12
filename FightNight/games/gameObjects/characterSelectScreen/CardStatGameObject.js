@@ -3,7 +3,7 @@ class CardStatGameObject extends GameObject{
         super("CardStatGameObject")
         this.addComponent(new TextLabel(), {
             text: text,
-            font: "bold 12px Impact",
+            font: "bold 120px Impact",
             fillStyle: "white",
             textAlign: "center"
 

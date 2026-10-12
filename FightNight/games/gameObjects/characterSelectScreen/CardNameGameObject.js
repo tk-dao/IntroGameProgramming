@@ -3,7 +3,7 @@ class CardNameGameObject extends GameObject{
         super("CardNameGameObject")
         this.addComponent(new TextLabel(), {
             text: CharacterData.characters[index].name,
-            font: "bold 20px Impact",
+            font: "bold 180px Impact",
             fillStyle: "white",
             textAlign: "center"
         })

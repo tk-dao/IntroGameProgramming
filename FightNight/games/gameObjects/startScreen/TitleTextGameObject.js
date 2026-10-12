@@ -3,10 +3,10 @@ class TitleTextGameObject extends GameObject{
         super("TitleTextGameObject")
         this.addComponent(new TextLabel(), {
             text: "FIGHT NIGHT",
-            font: "bold 48px Impact",
+            font: "bold 420px Impact",
             fillStyle: "rgb(255, 0, 0)",
             textAlign: "center",
-            letterSpacing: "10px"
+            letterSpacing: "100px"
         })
     }
 }
