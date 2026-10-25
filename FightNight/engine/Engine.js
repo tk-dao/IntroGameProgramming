@@ -48,7 +48,7 @@ class Engine{
     static update(){
         //call the update in your Scene file
         // update()
-        // SceneManager.currentScene.start()
+        SceneManager.currentScene.start()
         SceneManager.currentScene.update()
     }
     

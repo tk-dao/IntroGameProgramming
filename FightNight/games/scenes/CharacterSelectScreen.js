@@ -1,6 +1,12 @@
 class CharacterSelectScreen extends Scene{
     constructor(){
-        super()
+        super("transparent")
+
+        let camera = this.gameObjects[0]
+        camera.transform.position = new Vector2(3000, 1700)
+        let zoom = 6000 / window.innerWidth
+        camera.transform.scale = new Vector2(zoom, zoom)
+
         this.instantiate(new CTitleTextGameObject(), new Vector2(3000, 500))
         this.instantiate(new CEscapeTextGameObject(), new Vector2(5000, 3200))
         

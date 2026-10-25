@@ -8,6 +8,7 @@ class PlayerTwo extends GameObject{
         this.addComponent(new P2Update())
         //shape of player object
         this.addComponent(new Polygon(), {fillStyle: this.p2Data.fillStyle, points: this.p2Data.shape})
+        this.addComponent(new Collider(), {points: this.p2Data.hitbox})
         this.addComponent(new Health(), {health: this.p2Data.health})
     }
 }   

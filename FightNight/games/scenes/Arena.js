@@ -2,7 +2,13 @@
 //main starting scene
 class Arena extends Scene{
     constructor(){
-        super()
+        super("transparent")
+
+        let camera = this.gameObjects[0]
+        camera.transform.position = new Vector2(3000, 1700)
+        let zoom = 6000 / window.innerWidth
+        camera.transform.scale = new Vector2(zoom, zoom)
+
         this.instantiate(new Stage(), new Vector2(3000, 1500))
 
         let playerOne = this.instantiate(new PlayerOne(), new Vector2(2000, 1400))

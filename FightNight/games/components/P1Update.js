@@ -12,31 +12,17 @@ class P1Update extends Component{
         this.transform.position.y += this.vy
     }
 
-    collideStage(){
-        this.grounded = false
+    onCollisionStay(other){
+        if(other.name != "Stage") return
 
-        let stage = GameObject.find("Stage")
+        let stageTop = other.transform.position.y
+        let playerBottom = this.transform.position.y + 100
 
-        let p = this.transform.position //player one position
-        let s = stage.transform.position //stage position
-
-        let half = 100
-        let stageHalfW = 2000
-        let stageTop = s.y + 0
-
-        let playerBottom = p.y + half //find bottom of player shape
-
-        //checks if players right-most side is off of left-most point of stage
-        //AND
-        //checks if players left-most side is off of right-most point of stage
-        let offStage = p.x + half > s.x - stageHalfW && p.x < s.x + stageHalfW 
-
-        if(offStage && playerBottom >= stageTop){
-            p.y = stageTop - half
+        if(this.vy >= 0 && playerBottom - stageTop < 50){
+            this.transform.position.y = stageTop - 100
             this.vy = 0
             this.grounded = true
         }
-
     }
     
     start(){
@@ -67,7 +53,7 @@ class P1Update extends Component{
         }
 
         this.applyGravity()
-        this.collideStage()
+        this.grounded = false
             
     }
 }

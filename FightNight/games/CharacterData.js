@@ -1,8 +1,8 @@
 class CharacterData{
     static characters = [
-        {name: "WARRIOR", shape: Assets.square, fillStyle: "rgb(220, 17, 17)", health: 100, damage: 5, speed: 30, range: 1, equipment: [Equipment.sword, Equipment.shield]},
-        {name: "RANGER", shape: Assets.triangle, fillStyle: "rgb(11, 185, 72)", health: 80, damage: 5, speed: 35, range: 5, equipment: [Equipment.bow, Equipment.buckler]},
-        {name: "MAGE", shape: Assets.wizard, fillStyle: "rgb(1, 87, 235)", health: 70, damage: 7, speed: 40, range: 3, equipment: [Equipment.staff]}
+        {name: "WARRIOR", shape: Assets.square, hitbox: Assets.square, fillStyle: "rgb(220, 17, 17)", health: 100, damage: 5, speed: 30, range: 1, equipment: [Equipment.sword, Equipment.shield]},
+        {name: "RANGER", shape: Assets.triangle, hitbox: Assets.triangle, fillStyle: "rgb(11, 185, 72)", health: 80, damage: 5, speed: 35, range: 5, equipment: [Equipment.bow, Equipment.buckler]},
+        {name: "MAGE", shape: Assets.wizard, hitbox: Assets.square, fillStyle: "rgb(1, 87, 235)", health: 70, damage: 7, speed: 40, range: 3, equipment: [Equipment.staff]}
     ]
 
     static CardXCoords = [1500, 3000, 4500]

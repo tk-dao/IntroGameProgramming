@@ -12,5 +12,12 @@ class Stage extends GameObject{
             new Vector2(-1000, 1000),
             
         ]})
+
+        this.addComponent(new Collider(), {points: [
+            new Vector2(-2000, 0),
+            new Vector2(2000, 0),
+            new Vector2(2000, 100),
+            new Vector2(-2000, 100),
+        ]})
     }
 }
