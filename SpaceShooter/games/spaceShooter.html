@@ -27,13 +27,14 @@
     <script src="../engine/components/TextLabel.js"></script>
     <script src="../engine/components/Camera.js"></script>
     <script src="../engine/components/MultiLineText.js"></script>
+    <script src="../engine/components/Collider.js"></script>
 
     <!--Game Specific scripts-->
     <script src="../games/scenes/Level01.js"></script>
     <script src="../games/scenes/Level02.js"></script>
     <script src="../games/scenes/GenericLevel.js"></script>
     
-    <script src="../games/gameObjects/MainGameObject.js"></script>
+    <script src="../games/gameObjects/PlayerGameObject.js"></script>
     <script src="../games/gameObjects/LaserGameObject.js"></script>
     <script src="../games/gameObjects/EnemyGameObject.js"></script>
     <script src="../games/gameObjects/PointsGameObject.js"></script>
@@ -63,11 +64,27 @@
           new Vector2(-1, 1),
           new Vector2(1, 1)
         ]})
+        gameObject.addComponent(new Collider())
+
+        let two = new GameObject()
+        two.addComponent(new Polygon(), {points: [
+          new Vector2(0, -1),
+          new Vector2(-1, 1),
+          new Vector2(1, 1)
+        ]})
+        two.addComponent(new Collider())
+
+
         console.assert(Collisions.isCollisionPointPolygon(new Vector2(0, 0), gameObject))
         console.assert(!Collisions.isCollisionPointPolygon(new Vector2(10000, 10000), gameObject))
         console.assert(!Collisions.isCollisionPointPolygon(new Vector2(0, 1.1), gameObject))
         console.assert(!Collisions.isCollisionPointPolygon(new Vector2(0, -1.1), gameObject))
 
+
+
+        console.assert(Collisions.isCollisionPolygonPolygon(gameObject, two))
+        two.transform.position = new Vector2(1000, 1000)
+        console.assert(!Collisions.isCollisionPolygonPolygon(gameObject, two))
 
     </script>
   </body>

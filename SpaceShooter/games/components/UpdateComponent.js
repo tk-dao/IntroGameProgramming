@@ -48,6 +48,23 @@ class UpdateComponent extends Component{
             instantiate(new LaserGameObject(), this.transform.position.clone())
 
         Camera.main.transform.position = this.transform.position.clone()
+
+
+
+        // const enemies = GameObject.findGameObjectsWithTag("Enemy")
+        // for(const enemy of enemies){
+        //     if(Collisions.isCollisionPolygonPolygon(this.gameObject, enemy)){
+        //         console.log("collision")
+        //     }
+        // }
             
+    }
+
+    onCollisionStay(other){
+        console.log(other)
+    }
+
+    onMouseOver(){
+        console.log("Mouse Over")
     }
 }

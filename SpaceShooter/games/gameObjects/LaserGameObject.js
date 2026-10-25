@@ -8,6 +8,7 @@ class LaserGameObject extends GameObject{
         //adds polygon as component so we can change the shape
         this.addComponent(new Polygon(), {fillStyle:"red", points:Assets.lightning})
         this.transform.scale = new Vector2(.5, .5)
+        this.addComponent(new Collider())
 
     }
 }
