@@ -52,6 +52,11 @@ class P1Update extends Component{
 
         }
 
+        //health down test
+        if (Input.keysDown.includes("KeyH")){
+            this.gameObject.getComponent(Health).health -= 10
+        }
+
         this.applyGravity()
         this.grounded = false
             
