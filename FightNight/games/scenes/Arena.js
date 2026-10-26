@@ -14,12 +14,14 @@ class Arena extends Scene{
         this.equip(playerOne, CharacterData.p1) 
         this.equip (playerTwo, CharacterData.p2)
 
+        this.makeHealthBar(playerOne, new Vector2(600, Engine.height - 300))
+        let p2Bar = this.makeHealthBar(playerTwo, new Vector2(5400, Engine.height - 300))
+        p2Bar.transform.scale = new Vector2(-1, 1)
+
         this.makePortrait(CharacterData.p1, new Vector2(400, Engine.height - 300))
         this.makePortrait(CharacterData.p2, new Vector2(5600, Engine.height - 300))
 
-        this.makeHealthBar(playerOne, new Vector2(650, Engine.height - 300))
-        let p2Bar = this.makeHealthBar(playerTwo, new Vector2(5350, Engine.height - 300))
-        p2Bar.transform.scale = new Vector2(-1, 1)
+        
 
     }
 

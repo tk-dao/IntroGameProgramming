@@ -1,6 +1,6 @@
 class HealthBar extends Component{
     width = 1400
-    height = 120
+    height = 200
     character
 
 
