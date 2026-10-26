@@ -3,11 +3,16 @@ class Engine{
     static ctx
     static layers = ["default", "UI"]
     static stars = []
+    static width = 6000
+    static height = 3375
 
     static start(nextScene, settings){
         //setup canvas and contex for game
         Engine.canvas = document.querySelector("#canv");
         Engine.ctx = Engine.canvas.getContext("2d");
+
+        Engine.canvas.width = Engine.width
+        Engine.canvas.height = Engine.height
 
         //make a listener to keep track when keys get pressed and released
         addEventListener("keydown", Input.keydown)
@@ -16,9 +21,9 @@ class Engine{
         //makes a list of random points around the screen for stars (150 times)
         for(let i = 0; i < 150; i++){
             Engine.stars.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                radius: Math.random() * 3 + 1
+                x: Math.random() * Engine.width,
+                y: Math.random() * Engine.height,
+                radius: Math.random() * 8 + 3
             })
         }
 
@@ -53,9 +58,6 @@ class Engine{
     }
     
     static draw(){
-        //sets canvas to width and height of screen
-        Engine.canvas.width = window.innerWidth;
-        Engine.canvas.height = window.innerHeight;
 
         //adds background
         Engine.ctx.fillStyle = "rgb(0, 0, 0)"

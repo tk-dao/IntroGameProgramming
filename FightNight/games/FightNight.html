@@ -6,6 +6,17 @@
             margin: 0;
             overflow: hidden;
         }
+
+        body{
+          background: black;
+        }
+
+        canvas{
+          display: block;
+          width: 100vw;
+          height: 100vh;
+          object-fit: contain;
+        }
     </style>
   </head>
   <body>
@@ -27,6 +38,7 @@
     <script src="../engine/components/TextLabel.js"></script>
     <script src="../engine/components/Camera.js"></script>
     <script src="../engine/components/Collider.js"></script>
+    <script src="../engine/components/Circle.js"></script>
 
     <!--Game Specific scripts-->
     <script src="../games/scenes/Arena.js"></script>
