@@ -150,6 +150,41 @@ class Assets {
 
 
     //SPELLS
+    static missile = [
+        new Vector2(75, 0),
+        new Vector2(20, 14),
+        new Vector2(-75, 0),
+        new Vector2(20, -14),
+    ]
+
+    
+    //fireball: big round head, flames wrapping off the sides (flies right)
+    static fireball = [
+        //head (top side, around the front, to bottom side)
+        new Vector2(19, -32),
+        new Vector2(30, -31),
+        new Vector2(39, -27),
+        new Vector2(47, -20),
+        new Vector2(52, -10),
+        new Vector2(54, 0),
+        new Vector2(52, 10),
+        new Vector2(47, 20),
+        new Vector2(39, 27),
+        new Vector2(30, 31),
+        new Vector2(19, 32),
+        //bottom flames
+        new Vector2(-28, 44),
+        new Vector2(1, 25),
+        new Vector2(-55, 27),
+        new Vector2(-8, 12),
+        //center trail
+        new Vector2(-80, 0),
+        //top flames
+        new Vector2(-8, -12),
+        new Vector2(-55, -27),
+        new Vector2(1, -25),
+        new Vector2(-28, -44),
+    ]
 
     
 }

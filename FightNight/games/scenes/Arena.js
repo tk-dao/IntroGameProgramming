@@ -14,12 +14,19 @@ class Arena extends Scene{
         this.equip(playerOne, CharacterData.p1) 
         this.equip (playerTwo, CharacterData.p2)
 
+        this.makePortrait(CharacterData.p1, new Vector2(400, Engine.height - 300))
+        this.makePortrait(CharacterData.p2, new Vector2(5600, Engine.height - 300))
+
         this.makeHealthBar(playerOne, new Vector2(600, Engine.height - 300))
         let p2Bar = this.makeHealthBar(playerTwo, new Vector2(5400, Engine.height - 300))
         p2Bar.transform.scale = new Vector2(-1, 1)
 
-        this.makePortrait(CharacterData.p1, new Vector2(400, Engine.height - 300))
-        this.makePortrait(CharacterData.p2, new Vector2(5600, Engine.height - 300))
+        this.makeAbility(CharacterData.p1.abilities[0], CharacterData.p1, "F", new Vector2(600, Engine.height - 1000))
+        this.makeAbility(CharacterData.p1.abilities[1], CharacterData.p1, "G", new Vector2(1000, Engine.height - 700))
+        this.makeAbility(CharacterData.p2.abilities[0], CharacterData.p2, "]", new Vector2(5400, Engine.height - 1000))
+        this.makeAbility(CharacterData.p2.abilities[1], CharacterData.p2, "\\", new Vector2(5000, Engine.height - 700))
+
+
 
         
 
@@ -49,5 +56,24 @@ class Arena extends Scene{
         bar.addComponent(new HealthBar(), {character: player})
         this.instantiate(bar, position)
         return bar
+    }
+
+    makeAbility(ability, data, key, position){
+        let slot = new GameObject("AbilitySlot", [], "UI")
+        slot.addComponent(new Circle(), {radius: 130, fillStyle: "rgb(40, 40, 40)"})
+        this.instantiate(slot, position)
+
+        let icon = new GameObject("AbilityIcon", [], "UI")
+        icon.addComponent(new Polygon(), {fillStyle: data.fillStyle, points: ability.icon})
+        this.instantiate(icon, new Vector2(0, 0))
+        icon.transform.scale = new Vector2(1.6, 1.6)
+        icon.transform.setParent(slot.transform)
+
+        let label = new GameObject("AbilityKey", [], "UI")
+        label.addComponent(new TextLabel(), {text: key, font: "bold 120px Impact", fillStyle: "white", textAlign: "center"})
+        this.instantiate(label, new Vector2(0, -170))
+        label.transform.setParent(slot.transform)
+
+        return slot
     }
 }
