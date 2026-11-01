@@ -86,24 +86,6 @@ class Assets {
         new Vector2(-1, 0),
     ]
 
-    static arrow = [
-        //tip
-        new Vector2(50, 0),
-        new Vector2(40, -5),
-        new Vector2(40, -1),
-        //shaft
-        new Vector2(-30, -1),
-        //feathers
-        new Vector2(-35, -6),
-        new Vector2(-40, -6),
-        new Vector2(-35, 0),
-        new Vector2(-40, 6),
-        new Vector2(-35, 6),
-        new Vector2(-30, 1),
-        //back to tip
-        new Vector2(40, 1),
-        new Vector2(40, 5),
-    ]
 
     static buckler = [
         new Vector2(40, 0),
@@ -149,7 +131,7 @@ class Assets {
     ]
 
 
-    //SPELLS
+    //Attacks
     static missile = [
         new Vector2(75, 0),
         new Vector2(20, 14),
@@ -158,7 +140,6 @@ class Assets {
     ]
 
     
-    //fireball: big round head, flames wrapping off the sides (flies right)
     static fireball = [
         //head (top side, around the front, to bottom side)
         new Vector2(19, -32),
@@ -184,6 +165,47 @@ class Assets {
         new Vector2(-55, -27),
         new Vector2(1, -25),
         new Vector2(-28, -44),
+    ]
+
+    //crescent slash (faces right)
+    //sweeping slash: thin tip at the top, thick hooked end at the bottom (faces right)
+    static slash = [
+        //outer edge, tip to bottom
+        new Vector2(-74, -169),
+        new Vector2(-15, -163),
+        new Vector2(38, -136),
+        new Vector2(78, -92),
+        new Vector2(98, -36),
+        new Vector2(96, 24),
+        new Vector2(73, 78),
+        new Vector2(32, 121),
+        //inner edge, bottom back up to the tip
+        new Vector2(8, 87),
+        new Vector2(45, 60),
+        new Vector2(70, 18),
+        new Vector2(78, -33),
+        new Vector2(65, -84),
+        new Vector2(33, -129),
+        new Vector2(-16, -159),
+    ]
+
+    static arrow = [
+        //tip
+        new Vector2(50, 0),
+        new Vector2(40, -7),
+        new Vector2(40, -3),
+        //shaft
+        new Vector2(-30, -3),
+        //feathers
+        new Vector2(-35, -6),
+        new Vector2(-40, -6),
+        new Vector2(-35, 0),
+        new Vector2(-40, 6),
+        new Vector2(-35, 6),
+        new Vector2(-30, 3),
+        //back to tip
+        new Vector2(40, 3),
+        new Vector2(40, 7),
     ]
 
     
