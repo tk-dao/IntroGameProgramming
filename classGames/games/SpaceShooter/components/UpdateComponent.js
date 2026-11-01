@@ -1,0 +1,70 @@
+
+//handles player movement and fires laser
+class UpdateComponent extends Component{
+    
+    speed = 1000
+
+
+    //reset laser cooldown
+    start(){
+        this.timeSinceLastLaser = 0
+    }
+    
+    //update every frame
+    update() {
+        //count frame since last laser fired
+        this.timeSinceLastLaser += 1
+
+        //console.log(Input.keysDown)
+
+        //moves player object based on arrow keys press
+        if (Input.keysDown.includes("ArrowRight")) {
+            this.transform.position.x += Time.deltaTime * this.speed
+
+        }
+        if (Input.keysDown.includes("ArrowLeft")) {
+            this.transform.position.x -= Time.deltaTime * this.speed
+
+        }
+        if (Input.keysDown.includes("ArrowUp")) {
+            this.transform.position.y -= Time.deltaTime * this.speed
+
+        }
+        if (Input.keysDown.includes("ArrowDown")) {
+            this.transform.position.y += Time.deltaTime * this.speed
+
+        }
+
+        // //fires laser every 10 frames
+        // if (this.timeSinceLastLaser > 10) {
+        //     this.timeSinceLastLaser = 0
+        //     //create laser (uses clone so position doesn't affect main player object position)
+        //     instantiate(new LaserGameObject(), this.transform.position.clone())
+
+
+        // }
+
+        if(Input.keysDownThisFrame.includes("Space"))
+            instantiate(new LaserGameObject(), this.transform.position.clone())
+
+        Camera.main.transform.position = this.transform.position.clone()
+
+
+
+        // const enemies = GameObject.findGameObjectsWithTag("Enemy")
+        // for(const enemy of enemies){
+        //     if(Collisions.isCollisionPolygonPolygon(this.gameObject, enemy)){
+        //         console.log("collision")
+        //     }
+        // }
+            
+    }
+
+    onCollisionStay(other){
+        console.log(other)
+    }
+
+    onMouseOver(){
+        console.log("Mouse Over")
+    }
+}
