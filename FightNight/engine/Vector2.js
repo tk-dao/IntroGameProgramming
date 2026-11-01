@@ -33,4 +33,17 @@ class Vector2{
     orthogonal(){
         return new Vector2(this.y, -this.x)
     }
+
+    normalized(){
+        return new Vector2(this.x / this.magnitude, this.y / this.magnitude)
+    }
+
+    scaled(scaler){
+        return new Vector2(this.x * scaler, this.y * scaler)
+    }
+
+    plusEquals(other){
+        this.x += other.x,
+        this.y += other.y
+    }
 }

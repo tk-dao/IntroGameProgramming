@@ -2,31 +2,23 @@
 //handles player movement and fires laser
 class P1Update extends Component{
     
-    vy = 0
-    gravity = 2
     grounded = false
     p1Data = CharacterData.characters[Settings.p1Character]
 
-    applyGravity(){
-        this.vy += this.gravity
-        this.transform.position.y += this.vy
-    }
+    onCollisionStay(other, mtv){
+        if(other.name != "Stage" && !other.tags.includes("Player")) return
 
-    onCollisionStay(other){
-        if(other.name != "Stage") return
-
-        let stageTop = other.transform.position.y
-        let playerBottom = this.transform.position.y + 100
-
-        if(this.vy >= 0 && playerBottom - stageTop < 50){
-            this.transform.position.y = stageTop - 100
-            this.vy = 0
+        if(mtv.y < 0){
+            if(this.rb.velocity.y > 0){
+                this.rb.velocity.y = 0
+            }
             this.grounded = true
         }
     }
     
     start(){
         this.facingLeft = false
+        this.rb = this.gameObject.getComponent(RigidBody)
     }
     
     //update every frame
@@ -48,7 +40,7 @@ class P1Update extends Component{
 
         }
         if (Input.keysDown.includes("KeyW") && this.grounded) {
-            this.vy = -35
+            this.rb.velocity.y = -2100
 
         }
 
@@ -57,7 +49,6 @@ class P1Update extends Component{
             this.gameObject.getComponent(Health).health -= 10
         }
 
-        this.applyGravity()
         this.grounded = false
             
     }

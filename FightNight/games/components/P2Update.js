@@ -2,32 +2,23 @@
 //handles player movement and fires laser
 class P2Update extends Component{
     
-    vy = 0
-    gravity = 2
+    
     grounded = false
     p2Data = CharacterData.characters[Settings.p2Character]
-
-    applyGravity(){
-        this.vy += this.gravity
-        this.transform.position.y += this.vy
-    }
-
-    
     
     start(){
         this.facingLeft = true
         this.transform.scale.x = -1
+        this.rb = this.gameObject.getComponent(RigidBody)
     }
 
-    onCollisionStay(other){
-        if(other.name != "Stage") return
+    onCollisionStay(other, mtv){
+        if(other.name != "Stage" && !other.tags.includes("Player")) return
 
-        let stageTop = other.transform.position.y
-        let playerBottom = this.transform.position.y + 100
-
-        if(this.vy >= 0 && playerBottom - stageTop < 50){
-            this.transform.position.y = stageTop - 100
-            this.vy = 0
+        if(mtv.y < 0){
+            if(this.rb.velocity.y > 0){
+                this.rb.velocity.y = 0
+            }
             this.grounded = true
         }
     }
@@ -52,7 +43,7 @@ class P2Update extends Component{
 
         }
         if (Input.keysDown.includes("ArrowUp") && this.grounded) {
-            this.vy = -35
+            this.rb.velocity.y = -2100
 
         }
 
@@ -61,7 +52,6 @@ class P2Update extends Component{
             this.gameObject.getComponent(Health).health -= 10
         }
 
-        this.applyGravity()
         this.grounded = false
             
     }
