@@ -2,8 +2,22 @@ class SkillController extends Component{
     data
     keys = []
     cooldownLeft = 0
+    shield
+    blockTime = 0
 
     update(){
+
+        if(this.blockTime > 0){
+            this.blockTime -= Time.deltaTime
+        }
+        if(this.shield){
+            let distance = Math.abs(this.shield.transform.position.x)
+            this.shield.transform.position.x = this.blockTime > 0 ? distance : -distance
+
+            let size = this.blockTime > 0 ? 1.5 : 1
+            this.shield.transform.scale = new Vector2(size, size)
+        }
+
         if(this.cooldownLeft > 0){
             this.cooldownLeft -= Time.deltaTime
         }
@@ -18,7 +32,10 @@ class SkillController extends Component{
     }
 
     use(ability){
-        if(ability.block) return
+        if(ability.block){
+            this.blockTime = ability.duration
+            return
+        }
         
         let facing = Math.sign(this.transform.scale.x)
         let scale = ability.scale ?? 1

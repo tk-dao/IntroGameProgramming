@@ -36,6 +36,10 @@ class Arena extends Scene{
         for(const item of data.equipment){
             let weapon = this.instantiate(new WeaponGameObject(item, data.fillStyle), item.offset.clone())
             weapon.transform.setParent(player.transform)
+
+            if(item == Equipment.shield || item == Equipment.buckler){
+                player.getComponent(SkillController).shield = weapon
+            }
         }
     }
 

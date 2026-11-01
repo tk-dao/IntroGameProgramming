@@ -14,7 +14,7 @@ class CharacterData{
                     new Vector2(90, 122),
                     new Vector2(0, 122),
                 ]},
-            {icon: Assets.shield, block: true, cooldown: 4}
+            {icon: Assets.shield, block: true, cooldown: 4, duration: 1}
         ]},
 
         {name: "RANGER",
@@ -31,7 +31,7 @@ class CharacterData{
                     new Vector2(50, 6),
                     new Vector2(-40, 6),
                 ]
-            }, {icon: Assets.buckler, block: true, cooldown: 4}
+            }, {icon: Assets.buckler, block: true, cooldown: 4, duration: 1}
         ]},
 
         {name: "MAGE",

@@ -18,7 +18,12 @@ class AttackController extends Component{
 
     update(){
         if(this.target){
-            this.target.getComponent(Health).health -= this.damage
+            let targetSkills = this.target.getComponent(SkillController)
+            let blocking = targetSkills && targetSkills.blockTime > 0
+
+            if(!blocking){
+                this.target.getComponent(Health).health -= this.damage
+            }
             this.gameObject.destroy()
             return
         }
