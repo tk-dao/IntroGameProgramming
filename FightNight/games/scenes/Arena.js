@@ -21,10 +21,10 @@ class Arena extends Scene{
         let p2Bar = this.makeHealthBar(playerTwo, new Vector2(5400, Engine.height - 300))
         p2Bar.transform.scale = new Vector2(-1, 1)
 
-        this.makeAbility(CharacterData.p1.abilities[0], CharacterData.p1, "F", new Vector2(600, Engine.height - 1000))
-        this.makeAbility(CharacterData.p1.abilities[1], CharacterData.p1, "G", new Vector2(1000, Engine.height - 700))
-        this.makeAbility(CharacterData.p2.abilities[0], CharacterData.p2, "]", new Vector2(5400, Engine.height - 1000))
-        this.makeAbility(CharacterData.p2.abilities[1], CharacterData.p2, "\\", new Vector2(5000, Engine.height - 700))
+        this.makeAbility(CharacterData.p1.abilities[0], CharacterData.p1, "F", new Vector2(600, Engine.height - 1000), playerOne)
+        this.makeAbility(CharacterData.p1.abilities[1], CharacterData.p1, "G", new Vector2(1000, Engine.height - 700), playerOne)
+        this.makeAbility(CharacterData.p2.abilities[0], CharacterData.p2, "]", new Vector2(5400, Engine.height - 1000), playerTwo)
+        this.makeAbility(CharacterData.p2.abilities[1], CharacterData.p2, "\\", new Vector2(5000, Engine.height - 700), playerTwo)
 
 
 
@@ -62,7 +62,7 @@ class Arena extends Scene{
         return bar
     }
 
-    makeAbility(ability, data, key, position){
+    makeAbility(ability, data, key, position, player){
         let slot = new GameObject("AbilitySlot", [], "UI")
         slot.addComponent(new Circle(), {radius: 130, fillStyle: "rgb(40, 40, 40)"})
         this.instantiate(slot, position)
@@ -72,6 +72,16 @@ class Arena extends Scene{
         this.instantiate(icon, new Vector2(0, 0))
         icon.transform.scale = new Vector2(1.6, 1.6)
         icon.transform.setParent(slot.transform)
+
+        if(ability.cooldown){
+            let overlay = new GameObject("CooldownOverlay", [], "UI")
+            overlay.addComponent(new CooldownOverlay(), {
+                skills: player.getComponent(SkillController),
+                cooldown: ability.cooldown,
+            })
+            this.instantiate(overlay, new Vector2(0, 0))
+            overlay.transform.setParent(slot.transform)
+        }
 
         let label = new GameObject("AbilityKey", [], "UI")
         label.addComponent(new TextLabel(), {text: key, font: "bold 120px Impact", fillStyle: "white", textAlign: "center"})
