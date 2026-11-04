@@ -33,6 +33,10 @@ class Scene{
     //updates all game objects in scene
     update(){
 
+        for(const gameObject of this.gameObjects){
+            gameObject.broadcastMessage("fixedUpdate")
+        }
+
 
         //Collisions
         const collidable = GameObject.findGameObjectsByType(Collider)
@@ -57,13 +61,23 @@ class Scene{
 
         for(let i = 0; i < collidable.length; i++){
             for(let j = i + 1; j < collidable.length; j++){
+                const one = collidable[i]
+                const two = collidable[j]
+                if(!one.getComponent(RigidBody) && !two.getComponent(RigidBody))
+                    continue
+
+
                 const minimumTransformVector = Collisions.isCollisionPolygonPolygon(collidable[i], collidable[j])
                 if(minimumTransformVector){
-                    collidable[i].broadcastMessage("onCollisionStay", [collidable[j], minimumTransformVector])
-                    collidable[j].broadcastMessage("onCollisionStay", [collidable[i], minimumTransformVector.scaled(-1)])
-
-                    if (collidable[i].getComponent(RigidBody) || collidable[j].getComponent(RigidBody)){
+                    
+                    if (!one.getComponent(Collider).isTrigger && !two.getComponent(Collider).isTrigger){
+                        collidable[i].broadcastMessage("onCollisionStay", [collidable[j], minimumTransformVector])
+                        collidable[j].broadcastMessage("onCollisionStay", [collidable[i], minimumTransformVector.scaled(-1)])
                         physicalCollisions.push({one: collidable[i], two: collidable[j], minimumTransformVector})
+                    }
+                    else{
+                        collidable[i].broadcastMessage("onTriggerStay", [collidable[j], minimumTransformVector])
+                        collidable[j].broadcastMessage("onTriggerStay", [collidable[i], minimumTransformVector.scaled(-1)])
                     }
                 }
             }
@@ -79,10 +93,10 @@ class Scene{
         }
 
 
-
         for(const gameObject of this.gameObjects){
             gameObject.update()
         }
+        
 
         let temp = []
         for(const gameObject of this.gameObjects){
