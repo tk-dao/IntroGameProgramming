@@ -19,6 +19,7 @@ class P2Update extends Component{
             if(this.rb.velocity.y > 0){
                 this.rb.velocity.y = 0
             }
+            this.rb.velocity.x = 0   //stops knockback slide when landing
             this.grounded = true
         }
     }

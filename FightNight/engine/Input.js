@@ -47,9 +47,10 @@ class Input{
     // if it isn't already in there (prevents duplicates from key-repeat
     // when a key is held down)
     static keydown(event){
-        if(!Input.keysDown.includes(event.code))
+        if(!Input.keysDown.includes(event.code)){
             Input.keysDown.push(event.code)
             Input.keysDownThisFrame.push(event.code)
+        }
     }
 
     // called when a key is released; removes the key's code from keysDown

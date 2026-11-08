@@ -4,7 +4,7 @@ class CharacterData{
         shape: Assets.square,
         hitbox: Assets.square,
         fillStyle: "rgb(220, 17, 17)",
-        health: 100, damage: 5, speed: 30, range: 1,
+        health: 100, damage: 3, speed: 30, range: 1,
         equipment: [Equipment.sword, Equipment.shield],
         abilities: [
             {icon: Assets.sword, shape: Assets.slash, damage: 8, lifetime: 0.15, offset: 110,
@@ -24,7 +24,7 @@ class CharacterData{
         health: 80, damage: 5, speed: 35, range: 5,
         equipment: [Equipment.bow, Equipment.buckler],
         abilities: [
-            {icon: Assets.arrow, shape: Assets.arrow, damage: 5, speed: 60, range: 2500, offset: 150, scale: 2.5,
+            {icon: Assets.arrow, shape: Assets.arrow, damage: 3, speed: 60, range: 2500, offset: 150, scale: 2.5,
                 hitbox: [
                     new Vector2(-40, -6),
                     new Vector2(50, -6),
@@ -41,8 +41,8 @@ class CharacterData{
         health: 70, damage: 7, speed: 40, range: 3,
         equipment: [Equipment.staff],
         abilities: [
-            {icon: Assets.missile, shape: Assets.missile, damage: 5, speed: 60, range: 2000, offset: 150, scale: 2.5,},
-            {icon: Assets.fireball, shape: Assets.fireball, damage: 10, speed: 30, range: 1000, offset: 180, scale: 2.5,
+            {icon: Assets.missile, shape: Assets.missile, damage: 3, speed: 60, range: 2000, offset: 150, scale: 2.5,},
+            {icon: Assets.fireball, shape: Assets.fireball, damage: 10, speed: 30, range: 1000, offset: 180, scale: 2.5, knockback: 1800, explosionRadius: 400, gravity: 1500,
             hitbox: [
                 new Vector2(-20, -32),
                 new Vector2(54, -32),

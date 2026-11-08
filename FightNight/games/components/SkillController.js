@@ -50,7 +50,12 @@ class SkillController extends Component{
             speed: ability.speed ?? 0,
             range: ability.range ?? 0,
             lifetime: ability.lifetime ?? 0,
+            knockback: ability.knockback ?? 0,
+            explosionRadius: ability.explosionRadius ?? 0
         })
+        if(ability.gravity){
+            attack.addComponent(new RigidBody(), {gravity: ability.gravity})
+        }
 
         let position = new Vector2(this.transform.position.x + ability.offset * facing, this.transform.position.y)
         instantiate(attack, position)
