@@ -5,7 +5,7 @@ class StartController extends Component{
     }
 
     update(){
-        if(Input.keysDown.includes("Space")){
+        if(Input.keysDownThisFrame.includes("Space")){
             SceneManager.loadScene(CharacterSelectScreen)
         }
     }

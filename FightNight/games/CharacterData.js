@@ -4,10 +4,10 @@ class CharacterData{
         shape: Assets.square,
         hitbox: Assets.square,
         fillStyle: "rgb(220, 17, 17)",
-        health: 100, damage: 3, speed: 30, range: 1,
+        health: 100, damage: 5, speed: 30, range: 1,
         equipment: [Equipment.sword, Equipment.shield],
         abilities: [
-            {icon: Assets.sword, shape: Assets.slash, damage: 8, lifetime: 0.15, offset: 110,
+            {icon: Assets.sword, shape: Assets.slash, damage: 5, lifetime: 0.15, offset: 150,
                 hitbox: [
                     new Vector2(0, -122),
                     new Vector2(90, -122),
@@ -21,7 +21,7 @@ class CharacterData{
         shape: Assets.triangle,
         hitbox: Assets.triangle,
         fillStyle: "rgb(11, 185, 72)",
-        health: 80, damage: 5, speed: 35, range: 5,
+        health: 80, damage: 3, speed: 35, range: 5,
         equipment: [Equipment.bow, Equipment.buckler],
         abilities: [
             {icon: Assets.arrow, shape: Assets.arrow, damage: 3, speed: 60, range: 2500, offset: 150, scale: 2.5,

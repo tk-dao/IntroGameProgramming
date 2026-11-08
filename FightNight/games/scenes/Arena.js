@@ -1,6 +1,10 @@
 
 //main starting scene
 class Arena extends Scene{
+
+    state = "playing"
+    winnerText = ""
+
     constructor(){
         super("transparent")
 
@@ -27,9 +31,30 @@ class Arena extends Scene{
         this.makeAbility(CharacterData.p2.abilities[1], CharacterData.p2, "\\", new Vector2(5000, Engine.height - 700), playerTwo)
 
 
-
+        let overlay = new GameObject("Overlay", [], "UI")
+        overlay.addComponent(new OverlayController())
+        this.overlay = this.instantiate(overlay)
         
 
+    }
+
+    update(){
+        if(this.state != "playing"){
+            this.overlay.update()
+            return
+        }
+
+        super.update()
+
+        let p1Alive = GameObject.find("PlayerOne")
+        let p2Alive = GameObject.find("PlayerTwo")
+
+        if(!p1Alive || !p2Alive){
+            this.state = "won"
+            if(!p1Alive && !p2Alive) this.winnerText = "DRAW"
+            else if(p1Alive) this.winnerText = "PLAYER ONE WINS!!"
+            else this.winnerText = "PLAYER TWO WINS!!"
+        }
     }
 
     equip(player, data){
