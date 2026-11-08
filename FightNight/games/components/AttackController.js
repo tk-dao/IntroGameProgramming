@@ -9,7 +9,7 @@ class AttackController extends Component{
     age = 0
     target
 
-    onCollisionStay(other){
+    onTriggerStay(other){
         if(other == this.player) return
         if(other.getComponent(Health)){
             this.target = other

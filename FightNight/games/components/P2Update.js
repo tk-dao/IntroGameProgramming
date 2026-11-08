@@ -22,37 +22,40 @@ class P2Update extends Component{
             this.grounded = true
         }
     }
-    
-    //update every frame
-    update() {
 
+    fixedUpdate(){
 
         //console.log(Input.keysDown)
-
+    
         //moves player object based on arrow keys press
         if (Input.keysDown.includes("ArrowRight")) {
             this.facingLeft = false
             this.transform.scale.x = 1
             this.transform.position.x += this.p2Data.speed
-
+    
         }
         if (Input.keysDown.includes("ArrowLeft")) {
             this.facingLeft = true
             this.transform.scale.x = -1
             this.transform.position.x -= this.p2Data.speed
-
+    
         }
+
+        this.grounded = false
+    }
+    
+    //update every frame
+    update() {
+
+
         if (Input.keysDown.includes("ArrowUp") && this.grounded) {
             this.rb.velocity.y = -2100
 
         }
 
-        //health down test
-        if (Input.keysDown.includes("KeyJ")){
-            this.gameObject.getComponent(Health).health -= 10
-        }
-
-        this.grounded = false
-            
+        // //health down test
+        // if (Input.keysDown.includes("KeyJ")){
+        //     this.gameObject.getComponent(Health).health -= 10
+        // }
     }
 }

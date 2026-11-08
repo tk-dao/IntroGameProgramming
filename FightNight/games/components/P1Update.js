@@ -20,36 +20,40 @@ class P1Update extends Component{
         this.facingLeft = false
         this.rb = this.gameObject.getComponent(RigidBody)
     }
-    
-    //update every frame
-    update() {
 
-
+    fixedUpdate(){
 
         //moves player object based on arrow keys press
         if (Input.keysDown.includes("KeyD")) {
             this.facingLeft = false
             this.transform.scale.x = 1
             this.transform.position.x += this.p1Data.speed
-
+    
         }
         if (Input.keysDown.includes("KeyA")) {
             this.facingLeft = true
             this.transform.scale.x = -1
             this.transform.position.x -= this.p1Data.speed
-
+    
         }
+        
+        this.grounded = false
+    }
+    
+    //update every frame
+    update() {
+
+
         if (Input.keysDown.includes("KeyW") && this.grounded) {
             this.rb.velocity.y = -2100
 
         }
 
-        //health down test
-        if (Input.keysDown.includes("KeyH")){
-            this.gameObject.getComponent(Health).health -= 10
-        }
+        // //health down test
+        // if (Input.keysDown.includes("KeyH")){
+        //     this.gameObject.getComponent(Health).health -= 10
+        // }
 
-        this.grounded = false
             
     }
 }

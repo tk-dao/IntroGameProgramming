@@ -42,14 +42,14 @@ class SkillController extends Component{
 
         let attack = new GameObject("Attack")
         attack.addComponent(new Polygon(), {fillStyle: this.data.fillStyle, points: ability.shape})
-        attack.addComponent(new Collider(), {points: ability.hitbox ?? ability.shape})
+        attack.addComponent(new Collider(), {points: ability.hitbox ?? ability.shape, isTrigger: true})
         attack.addComponent(new AttackController(), {
             player: this.gameObject,
             direction: facing,
             damage: ability.damage,
             speed: ability.speed ?? 0,
             range: ability.range ?? 0,
-            lifetime: ability.lifetime ?? 0
+            lifetime: ability.lifetime ?? 0,
         })
 
         let position = new Vector2(this.transform.position.x + ability.offset * facing, this.transform.position.y)

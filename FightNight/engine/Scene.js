@@ -33,13 +33,12 @@ class Scene{
     //updates all game objects in scene
     update(){
 
+        for(const gameObject of this.gameObjects){
+                gameObject.broadcastMessage("fixedUpdate")
+        }
 
         //Collisions
         const collidable = GameObject.findGameObjectsByType(Collider)
-        
-        for(const gameObject of this.gameObjects){
-            gameObject.update()
-        }
 
 
         if(Input.mousePosition){
@@ -61,13 +60,20 @@ class Scene{
 
         for(let i = 0; i < collidable.length; i++){
             for(let j = i + 1; j < collidable.length; j++){
-                const minimumTransformVector = Collisions.isCollisionPolygonPolygon(collidable[i], collidable[j])
-                if(minimumTransformVector){
-                    collidable[i].broadcastMessage("onCollisionStay", [collidable[j], minimumTransformVector])
-                    collidable[j].broadcastMessage("onCollisionStay", [collidable[i], minimumTransformVector.scaled(-1)])
+                const one = collidable[i]
+                const two = collidable[j]
+                if(!one.getComponent(RigidBody) && !two.getComponent(RigidBody))
+                    continue
 
-                    if (collidable[i].getComponent(RigidBody) || collidable[j].getComponent(RigidBody)){
-                        physicalCollisions.push({one: collidable[i], two: collidable[j], minimumTransformVector})
+                const minimumTransformVector = Collisions.isCollisionPolygonPolygon(one, two)
+                if(minimumTransformVector){
+                    if(!one.getComponent(Collider).isTrigger && !two.getComponent(Collider).isTrigger){
+                        one.broadcastMessage("onCollisionStay", [two, minimumTransformVector])
+                        two.broadcastMessage("onCollisionStay", [one, minimumTransformVector.scaled(-1)])
+                        physicalCollisions.push({one, two, minimumTransformVector})
+                    } else {
+                        one.broadcastMessage("onTriggerStay", [two, minimumTransformVector])
+                        two.broadcastMessage("onTriggerStay", [one, minimumTransformVector.scaled(-1)])
                     }
                 }
             }
@@ -80,6 +86,10 @@ class Scene{
             if(physicalCollision.two.getComponent(RigidBody)){
                 physicalCollision.two.transform.position.plusEquals(physicalCollision.minimumTransformVector.scaled(-1))
             }
+        }
+
+        for(const gameObject of this.gameObjects){
+            gameObject.update()
         }
 
 
