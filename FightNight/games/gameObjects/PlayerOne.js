@@ -12,5 +12,6 @@ class PlayerOne extends GameObject{
         this.addComponent(new Health(), {health: this.p1Data.health})
         this.addComponent(new SkillController(), {data: this.p1Data, keys: ["KeyF", "KeyG"]})
         this.addComponent(new RigidBody(), {gravity: 7200})
+        this.addComponent(new HitFlash())
     }
 }

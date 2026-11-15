@@ -12,5 +12,6 @@ class PlayerTwo extends GameObject{
         this.addComponent(new Health(), {health: this.p2Data.health})
         this.addComponent(new SkillController(), {data: this.p2Data, keys: ["BracketRight", "Backslash"]})
         this.addComponent(new RigidBody(), {gravity: 7200})
+        this.addComponent(new HitFlash())
     }
 }   

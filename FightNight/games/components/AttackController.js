@@ -29,6 +29,7 @@ class AttackController extends Component{
         if(this.target){
             if(!this.isBlocking(this.target)){
                 this.target.getComponent(Health).health -= this.damage
+                this.target.getComponent(HitFlash).flash()
             }
             this.end()
             return
@@ -78,6 +79,8 @@ class AttackController extends Component{
 
             let distance = player.transform.position.minus(center).magnitude
             if(distance > this.explosionRadius) continue
+
+            player.getComponent(HitFlash).flash()
 
             let away = Math.sign(player.transform.position.x - center.x) || this.direction
             let rb = player.getComponent(RigidBody)
