@@ -34,7 +34,7 @@ class MultiLineText extends Component{
                 safeLine = possibleLine
             }
         }
-        ctx.fillText(possibleLine, 0, y)
+        ctx.fillText(safeLine, 0, y)
         
 
         // ctx.fillText(this.text, 0, 0)

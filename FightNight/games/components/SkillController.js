@@ -2,6 +2,7 @@ class SkillController extends Component{
     data
     keys = []
     cooldownLeft = 0
+    attackTimer = 0
     shield
     blockTime = 0
 
@@ -22,9 +23,15 @@ class SkillController extends Component{
             this.cooldownLeft -= Time.deltaTime
         }
 
-        if(Input.keysDownThisFrame.includes(this.keys[0])){
-            this.use(this.data.abilities[0])
+        if(this.attackTimer > 0){
+            this.attackTimer -= Time.deltaTime
         }
+
+        if(Input.keysDownThisFrame.includes(this.keys[0]) && this.attackTimer <= 0){
+            this.use(this.data.abilities[0])
+            this.attackTimer = this.data.abilities[0].attackSpeed
+        }
+
         if(Input.keysDownThisFrame.includes(this.keys[1]) && this.cooldownLeft <= 0){
             this.use(this.data.abilities[1])
             this.cooldownLeft = this.data.abilities[1].cooldown 

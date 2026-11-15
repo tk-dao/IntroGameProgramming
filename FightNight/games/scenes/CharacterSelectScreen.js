@@ -16,10 +16,7 @@ class CharacterSelectScreen extends Scene{
 
             this.instantiate(new CharacterIcon(i), new Vector2(cardX, 1650))
 
-            this.instantiate(new CardStatGameObject("HEALTH: " + data.health), new Vector2(cardX, 2250))
-            this.instantiate(new CardStatGameObject("DAMAGE: " + data.damage), new Vector2(cardX, 2400))
-            this.instantiate(new CardStatGameObject("SPEED: " + data.speed), new Vector2(cardX, 2550))
-            this.instantiate(new CardStatGameObject("RANGE: " + data.range), new Vector2(cardX, 2700))
+            this.instantiate(new CardDescriptionGameObject(data.description), new Vector2(cardX - 500, 2200))
         }
         this.instantiate(new CharacterSelectScreenGameObject(), new Vector2(0, 0))
     }
