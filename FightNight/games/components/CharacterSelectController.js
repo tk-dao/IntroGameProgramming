@@ -119,5 +119,15 @@ class CharacterSelectController extends Component{
         }
         ctx.lineWidth = 30
         ctx.strokeRect(p2x - sWidth / 2, y - sHeight / 2, sWidth, sHeight)
+
+        //lock in hints under each player's card
+        ctx.textAlign = "center"
+        ctx.font = "100px Impact"
+
+        ctx.fillStyle = "rgb(220, 17, 17)"
+        ctx.fillText("P1 - PRESS F TO LOCK IN", p1x, y + height / 2 + 180)
+
+        ctx.fillStyle = "rgb(11, 185, 72)"
+        ctx.fillText("P2 - PRESS ENTER TO LOCK IN", p2x, y + height / 2 + 180)
     }
 }
