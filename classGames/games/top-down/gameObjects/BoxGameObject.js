@@ -3,7 +3,7 @@ class BoxGameObject extends GameObject{
         super("BoxGameObject", [], "default")
         this.addComponent(new Polygon(), {fillStyle: "orange", points: Assets.triangle})
         this.addComponent(new Collider())
-        this.addComponent(new RigidBody())
+        this.addComponent(new RigidBody(), {gravity: 0})
 
         this.transform.scale = new Vector2(10, 10)
         
