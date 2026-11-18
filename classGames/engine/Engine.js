@@ -13,6 +13,8 @@ class Engine{
     static letterBoxingWidth = 0
     static letterBoxingHeight = 0
 
+    static lastTimeStep
+
     static start(nextScene, settings){
         //setup canvas and contex for game
         Engine.canvas = document.querySelector("#canv");
@@ -42,7 +44,17 @@ class Engine{
 
     //game loop (loop through as the game plays)
     //game needs to update, draw items on screen, and recall the game loop
-    static gameLoop(){
+    static gameLoop(timestamp){
+
+        if(!Engine.lastTimeStep){
+            Engine.lastTimeStep = timestamp
+        }
+        else {
+            const diffInMilliseconds = timestamp - Engine.lastTimeStep
+            const diffInSeconds = diffInMilliseconds / 1000
+            Time.deltaTime = Math.min(diffInSeconds, 1/60)
+            Engine.lastTimeStep = timestamp
+        }
 
         SceneManager.update()
 

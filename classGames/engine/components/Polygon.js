@@ -3,6 +3,7 @@ class Polygon extends Component{
     fillStyle = "magenta"
     //list of points that draws the polygon's shape
     points = []
+    alpha
 
     
     draw(ctx) {
@@ -10,6 +11,8 @@ class Polygon extends Component{
             
         //Signaling to the context that I'm going to draw something
         ctx.save();
+
+        ctx.globalAlpha = this.alpha
 
         //set center of our object
         // ctx.translate(position.x, position.y);
