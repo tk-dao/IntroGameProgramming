@@ -2,7 +2,6 @@ class Engine{
     static canvas
     static ctx
     static layers = ["default", "UI"]
-    static stars = []
     static width = 6000
     static height = 3375
 
@@ -17,15 +16,6 @@ class Engine{
         //make a listener to keep track when keys get pressed and released
         addEventListener("keydown", Input.keydown)
         addEventListener("keyup", Input.keyup)
-
-        //makes a list of random points around the screen for stars (150 times)
-        for(let i = 0; i < 150; i++){
-            Engine.stars.push({
-                x: Math.random() * Engine.width,
-                y: Math.random() * Engine.height,
-                radius: Math.random() * 8 + 3
-            })
-        }
 
         SceneManager.nextScene = nextScene
 
@@ -58,18 +48,6 @@ class Engine{
     }
     
     static draw(){
-
-        //adds background
-        Engine.ctx.fillStyle = "rgb(0, 0, 0)"
-        Engine.ctx.fillRect(0, 0, Engine.canvas.width, Engine.canvas.height)
-
-        //fills the screen with stars
-        Engine.ctx.fillStyle = "white"
-        for(const star of Engine.stars){
-            Engine.ctx.beginPath()
-            Engine.ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2)
-            Engine.ctx.fill()
-        }
         
         //call the draw in your Scene file
         //draw(Engine.ctx)

@@ -3,6 +3,7 @@ class CharacterSelectScreen extends Scene{
         super("transparent")
 
         this.gameObjects[0].transform.position = new Vector2(Engine.width / 2, Engine.height / 2)
+        this.instantiate(new StarsGameObject())
 
         this.instantiate(new CTitleTextGameObject(), new Vector2(3000, 500))
         this.instantiate(new CEscapeTextGameObject(), new Vector2(5000, 3200))

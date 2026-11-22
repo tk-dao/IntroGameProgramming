@@ -10,6 +10,8 @@ class Arena extends Scene{
 
         this.gameObjects[0].transform.position = new Vector2(Engine.width / 2, Engine.height / 2)
 
+        this.instantiate(new StarsGameObject())
+
         this.instantiate(new Stage(), new Vector2(3000, 1500))
 
         let playerOne = this.instantiate(new PlayerOne(), new Vector2(2000, 1400))
