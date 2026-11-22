@@ -34,8 +34,9 @@ class Scene{
     update(){
 
         for(const gameObject of this.gameObjects){
-                gameObject.broadcastMessage("fixedUpdate")
+            gameObject.broadcastMessage("fixedUpdate")
         }
+
 
         //Collisions
         const collidable = GameObject.findGameObjectsByType(Collider)
@@ -44,13 +45,17 @@ class Scene{
         if(Input.mousePosition){
             let matrix = new DOMMatrix()
             matrix.translateSelf(Engine.canvas.width/2, Engine.canvas.height/2)
+            if(Engine.cameraWidthInWorldSpace){
+                const scalar = Engine.cameraWidthInWorldSpace / (Engine.canvas.width - Engine.letterBoxingWidth)
+                matrix.scaleSelf(1/scalar, 1/scalar)
+            }
             matrix.multiplySelf(Camera.main.transform.getWorldMatrix().inverse())
 
             let worldPositionDOMPoint = matrix.inverse().transformPoint(Input.mousePosition)
             let worldPoint = new Vector2(worldPositionDOMPoint.x, worldPositionDOMPoint.y)
 
             for(const gameObject of collidable){
-                if(Collisions.isCollisionPointPolygon(worldPoint, gameObject)){
+                if(Collisions.isCollisionPointPolygon(collidable.layer == "UI" ? Input.mousePosition : worldPoint, gameObject)){
                     gameObject.broadcastMessage("onMouseOver", [])
                 }
             }
@@ -65,15 +70,18 @@ class Scene{
                 if(!one.getComponent(RigidBody) && !two.getComponent(RigidBody))
                     continue
 
-                const minimumTransformVector = Collisions.isCollisionPolygonPolygon(one, two)
+
+                const minimumTransformVector = Collisions.isCollisionPolygonPolygon(collidable[i], collidable[j])
                 if(minimumTransformVector){
-                    if(!one.getComponent(Collider).isTrigger && !two.getComponent(Collider).isTrigger){
-                        one.broadcastMessage("onCollisionStay", [two, minimumTransformVector])
-                        two.broadcastMessage("onCollisionStay", [one, minimumTransformVector.scaled(-1)])
-                        physicalCollisions.push({one, two, minimumTransformVector})
-                    } else {
-                        one.broadcastMessage("onTriggerStay", [two, minimumTransformVector])
-                        two.broadcastMessage("onTriggerStay", [one, minimumTransformVector.scaled(-1)])
+                    
+                    if (!one.getComponent(Collider).isTrigger && !two.getComponent(Collider).isTrigger){
+                        collidable[i].broadcastMessage("onCollisionStay", [collidable[j], minimumTransformVector])
+                        collidable[j].broadcastMessage("onCollisionStay", [collidable[i], minimumTransformVector.scaled(-1)])
+                        physicalCollisions.push({one: collidable[i], two: collidable[j], minimumTransformVector})
+                    }
+                    else{
+                        collidable[i].broadcastMessage("onTriggerStay", [collidable[j], minimumTransformVector])
+                        collidable[j].broadcastMessage("onTriggerStay", [collidable[i], minimumTransformVector.scaled(-1)])
                     }
                 }
             }
@@ -88,10 +96,11 @@ class Scene{
             }
         }
 
+
         for(const gameObject of this.gameObjects){
             gameObject.update()
         }
-
+        
 
         let temp = []
         for(const gameObject of this.gameObjects){
@@ -108,12 +117,33 @@ class Scene{
         ctx.fillStyle = Camera.main.backgroundColor
         ctx.fillRect(0, 0, Engine.canvas.width, Engine.canvas.height)
 
+        Engine.letterBoxingHeight = 0
+        Engine.letterBoxingWidth = 0
+        if(Engine.aspectRatio){
+            const currentAspectRatio = Engine.canvas.width / Engine.canvas.height
+            if(Engine.aspectRatio > currentAspectRatio){
+                const maxHeight = Engine.canvas.width / Engine.aspectRatio
+                Engine.letterBoxingHeight = Engine.canvas.height - maxHeight
+            }
+            else{
+                const maxWidth = Engine.aspectRatio * Engine.canvas.height
+                Engine.letterBoxingWidth = Engine.canvas.width - maxWidth
+            }
+        }
+
 
         //start camera code
         ctx.save()
 
         ctx.translate(Engine.canvas.width / 2, Engine.canvas.height / 2)
-        // ctx.translate(-Camera.main.transform.position.x, -Camera.main.transform.position.y)
+
+
+        if(Engine.cameraWidthInWorldSpace){
+            const scalar = Engine.cameraWidthInWorldSpace / (Engine.canvas.width - Engine.letterBoxingWidth)
+            ctx.scale(1/scalar, 1/scalar)
+        }
+
+
         ctx.setTransform(ctx.getTransform().multiply(Camera.main.transform.getWorldMatrix().inverse()))
 
         for(const layer of Engine.layers.filter(l=>l != "UI")){
@@ -126,7 +156,18 @@ class Scene{
         ctx.restore()
         //stop camera code
 
+        
+
+        //Draw letter boxing
+        ctx.fillStyle = "black"
+        ctx.fillRect(0, 0, Engine.canvas.width, Engine.letterBoxingHeight / 2)
+        ctx.fillRect(0, Engine.canvas.height - Engine.letterBoxingHeight / 2, Engine.canvas.width, Engine.letterBoxingHeight / 2)
+
+        ctx.fillRect(0, 0, Engine.letterBoxingWidth / 2, Engine.canvas.height)
+        ctx.fillRect(Engine.canvas.width - Engine.letterBoxingWidth / 2, 0, Engine.letterBoxingWidth / 2, Engine.canvas.height)
+
         //UI Layer
+        // ctx.translate(0, Engine.letterBoxingHeight / 2)
 
         for(const gameObject of this.gameObjects.filter(go=>go.layer == "UI")){
             gameObject.draw(ctx)

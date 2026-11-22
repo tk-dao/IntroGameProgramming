@@ -5,13 +5,16 @@ class Engine{
     static width = 6000
     static height = 3375
 
+    static aspectRatio
+    static cameraWidthInWorldSpace
+
+    static letterBoxingWidth = 0
+    static letterBoxingHeight = 0
+
     static start(nextScene, settings){
         //setup canvas and contex for game
         Engine.canvas = document.querySelector("#canv");
         Engine.ctx = Engine.canvas.getContext("2d");
-
-        Engine.canvas.width = Engine.width
-        Engine.canvas.height = Engine.height
 
         //make a listener to keep track when keys get pressed and released
         addEventListener("keydown", Input.keydown)
@@ -21,6 +24,8 @@ class Engine{
 
         if(settings){
             Engine.layers = settings.layers
+            Engine.aspectRatio = settings.aspectRatio
+            Engine.cameraWidthInWorldSpace = settings.cameraWidthInWorldSpace
         }
 
         requestAnimationFrame(Engine.gameLoop)
@@ -48,6 +53,9 @@ class Engine{
     }
     
     static draw(){
+
+        Engine.canvas.width = window.innerWidth
+        Engine.canvas.height = window.innerHeight
         
         //call the draw in your Scene file
         //draw(Engine.ctx)

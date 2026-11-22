@@ -17,7 +17,7 @@ class Stars extends Component{
     draw(ctx){
         //adds background
         ctx.fillStyle = "rgb(0, 0, 0)"
-        ctx.fillRect(0, 0, Engine.canvas.width, Engine.canvas.height)
+        ctx.fillRect(0, 0, Engine.width, Engine.height)
 
         //fills the screen with stars
         ctx.fillStyle = "white"

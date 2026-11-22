@@ -33,7 +33,7 @@ class Arena extends Scene{
         this.makeAbility(CharacterData.p2.abilities[1], CharacterData.p2, "\\", new Vector2(5000, Engine.height - 700), playerTwo)
 
 
-        let overlay = new GameObject("Overlay", [], "UI")
+        let overlay = new GameObject("Overlay", [], "hud")
         overlay.addComponent(new OverlayController())
         this.overlay = this.instantiate(overlay)
         
@@ -71,11 +71,11 @@ class Arena extends Scene{
     }
 
     makePortrait(data, position){
-        let portrait = new GameObject("Portrait", [], "UI")
+        let portrait = new GameObject("Portrait", [], "hud")
         portrait.addComponent(new Circle(), {radius: 200, fillStyle: "rgb(40, 40, 40)"})
         this.instantiate(portrait, position)
 
-        let icon = new GameObject("PortraitIcon", [], "UI")
+        let icon = new GameObject("PortraitIcon", [], "hud")
         icon.addComponent(new Polygon(), {fillStyle: data.fillStyle, points: data.shape})
         this.instantiate(icon, new Vector2(0, 0))
         icon.transform.scale = new Vector2(0.8, 0.8)
@@ -83,25 +83,25 @@ class Arena extends Scene{
     }
 
     makeHealthBar(player, position){
-        let bar = new GameObject("HealthBar", [], "UI")
+        let bar = new GameObject("HealthBar", [], "hud")
         bar.addComponent(new HealthBar(), {character: player})
         this.instantiate(bar, position)
         return bar
     }
 
     makeAbility(ability, data, key, position, player){
-        let slot = new GameObject("AbilitySlot", [], "UI")
+        let slot = new GameObject("AbilitySlot", [], "hud")
         slot.addComponent(new Circle(), {radius: 130, fillStyle: "rgb(40, 40, 40)"})
         this.instantiate(slot, position)
 
-        let icon = new GameObject("AbilityIcon", [], "UI")
+        let icon = new GameObject("AbilityIcon", [], "hud")
         icon.addComponent(new Polygon(), {fillStyle: data.fillStyle, points: ability.icon})
         this.instantiate(icon, new Vector2(0, 0))
         icon.transform.scale = new Vector2(1.6, 1.6)
         icon.transform.setParent(slot.transform)
 
         if(ability.cooldown){
-            let overlay = new GameObject("CooldownOverlay", [], "UI")
+            let overlay = new GameObject("CooldownOverlay", [], "hud")
             overlay.addComponent(new CooldownOverlay(), {
                 skills: player.getComponent(SkillController),
                 cooldown: ability.cooldown,
@@ -110,7 +110,7 @@ class Arena extends Scene{
             overlay.transform.setParent(slot.transform)
         }
 
-        let label = new GameObject("AbilityKey", [], "UI")
+        let label = new GameObject("AbilityKey", [], "hud")
         label.addComponent(new TextLabel(), {text: key, font: "bold 120px Impact", fillStyle: "white", textAlign: "center"})
         this.instantiate(label, new Vector2(0, -170))
         label.transform.setParent(slot.transform)
