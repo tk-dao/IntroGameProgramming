@@ -2,6 +2,7 @@ class Engine{
     static canvas
     static ctx
     static layers = ["default", "UI"]
+    static collisionLayers = []
     static width = 6000
     static height = 3375
 
@@ -26,6 +27,9 @@ class Engine{
             Engine.layers = settings.layers
             Engine.aspectRatio = settings.aspectRatio
             Engine.cameraWidthInWorldSpace = settings.cameraWidthInWorldSpace
+            if(settings.collisionLayers){
+                Engine.collisionLayers = settings.collisionLayers
+            }
         }
 
         requestAnimationFrame(Engine.gameLoop)
